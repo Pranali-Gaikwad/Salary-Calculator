@@ -33,84 +33,24 @@
                 android:textSize="30dp"
                 android:textColor="@color/colorPrimary"/>
             <ImageView
-                android:layout_width="300sp"
-                android:layout_height="200sp"
+                android:layout_width="400sp"
+                android:layout_height="300sp"
+                android:layout_marginTop="50dp"
                 android:gravity="center"
                 android:src="@drawable/salaryimage"/>
 
             <Button
-                android:id="@+id/btnSetting"
+                android:id="@+id/btnOfClickToNext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="135sp"
+                android:gravity="center"
+                android:layout_marginTop="100dp"
+                android:onClick="nextPage"
                 android:background="@color/colorPrimary"
-                android:text="@string/btnsetting"
+                android:text="@string/btnclick"
                 android:textColor="#ffffff" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20sp"
-            android:text="@string/name"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimary"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/username"
-                android:gravity="center"/>
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20sp"
-                android:text="@string/salary"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimary"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/salary"
-                android:gravity="center"/>
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btncheck"
-                android:layout_marginBottom="5dp"
-                android:textColor="#ffffff"
-                android:id="@+id/btnCalculate"
-                android:background="@color/colorPrimary"/>
-
-
-        </LinearLayout>
 
 
 

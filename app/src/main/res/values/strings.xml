@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">My Application</string>
-    <string name="title">Salary Calculator</string>
+    <string name="title">SALARY CALCULATOR</string>
     <string name="name">Name</string>
     <string name="salary">CTC</string>
     <string name="tax">Tax  </string>
@@ -8,8 +8,11 @@
     <string name="netsalary">Net Salary</string>
     <string name="btncheck">Calculate</string>
     <string name="btnsetting">Settings</string>
-    <string name="secondtitle">Add Details</string>
+    <string name="secondtitle">ADD DETAILS</string>
     <string name="epfPer">EPF %</string>
     <string name="taxPer">Tax %</string>
     <string name="btnadd">Add</string>
+    <string name="btnclick">click to next</string>
+    <string name="btnOfBack">back</string>
+    <string name="btnhome">Home Page</string>
 </resources>

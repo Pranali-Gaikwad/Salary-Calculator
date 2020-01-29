@@ -11,54 +11,33 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText name;
-    EditText salary;
 
-    Button btnSetting;
-    Button btnCalculator;
+    Button btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        name = findViewById(R.id.username);
-        salary = findViewById(R.id.salary);
 
-        btnSetting = findViewById(R.id.btnSetting);
-        btnCalculator = findViewById(R.id.btnCalculate);
+        btn = findViewById(R.id.btnOfClickToNext);
 
 
-        btnSetting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openNewActivity();
-            }
-        });
 
-        btnCalculator.setOnClickListener(new View.OnClickListener() {
+
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                openThirdActivity();
+                next();
             }
         });
 
 
     }
 
-
-    public void openNewActivity() {
+    public void next() {
         Intent intent = new Intent(this, NewActivity.class);
-        startActivity(intent);
-    }
-
-    public void openThirdActivity() {
-        Intent intent = new Intent(this, ThirdActivity.class);
-
-        String message2 =salary.getText().toString();
-
-        intent.putExtra("ctc", message2);
         startActivity(intent);
     }
 

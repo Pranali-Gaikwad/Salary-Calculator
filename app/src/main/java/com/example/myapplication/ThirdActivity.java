@@ -3,7 +3,8 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.widget.EditText;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,41 +15,54 @@ public class ThirdActivity extends AppCompatActivity {
     TextView tax;
     TextView epf;
     TextView netsalary;
+    Button btn;
+
     String salary1;
-    String perOfepf1;
-    String perOftax1;
+   /* String tp;
+    String ep;
+*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.third_activity);
 
-        Intent intent = getIntent();
-
-
-     salary1=intent.getExtras().getString("ctc");
-             perOfepf1 =intent.getExtras().getString("perOfepf");
-             perOftax1=intent.getExtras().getString("perOftax");
              tax = findViewById(R.id.tax);
              epf = findViewById(R.id.epf);
              netsalary = findViewById(R.id.netsalary);
+             btn=findViewById(R.id.btnOfClickToHome);
+
+        Intent intent = getIntent();
+        salary1=intent.getExtras().getString("ctc");
+        /*tp=intent.getExtras().getString("taxPer1");
+        ep=intent.getExtras().getString("epfPer1");
+*/
+        tax = findViewById(R.id.tax);
+        epf = findViewById(R.id.epf);
+        netsalary = findViewById(R.id.netsalary);
 
         netSalaryCalculation();
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotoHome();
+            }
+        });
 
-    }
-    boolean isEmpty(TextView text)
-    {
-        CharSequence str= text.getText().toString();
-        return TextUtils.isEmpty(str);
+
+
 
     }
     public void netSalaryCalculation()
     {
         double ctcSalary= Double.parseDouble(salary1);
-       /* double taxPer=Double.parseDouble(perOftax1);
-        double epfPer=Double.parseDouble(perOfepf1);*/
+         /* double taxPer=Double.parseDouble(tp);
+        double epfPer=Double.parseDouble(ep);*/
         double netsalaryOfMonth;
-        double ctcTax;
-        double ctcEpf;
+        double  ctcTax;
+        double  ctcEpf;
+
+       /* double  ctcTax=(ctcSalary*taxPer/100)/12;
+        double  ctcEpf=(ctcSalary*epfPer/100)/12;*/
       /* if(isEmpty(tax) && isEmpty(epf))
         {
             Toast t=Toast.makeText(this, "You must Add details in Settings", Toast.LENGTH_SHORT);
@@ -58,8 +72,6 @@ public class ThirdActivity extends AppCompatActivity {
         {
             ctcTax=(ctcSalary*taxPer/100)/12;
             ctcEpf=(ctcSalary*epfPer/100)/12;
-
-
         }*/
        if(ctcSalary>=500000)
         {
@@ -79,6 +91,7 @@ public class ThirdActivity extends AppCompatActivity {
             ctcEpf=(ctcSalary*12/100)/12;
         }
 
+
         tax.setText(String.valueOf(ctcTax));
         epf.setText(String.valueOf(ctcEpf));
 
@@ -87,4 +100,12 @@ public class ThirdActivity extends AppCompatActivity {
 
     }
 
-}
+
+    public void gotoHome()
+    {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    }
+
