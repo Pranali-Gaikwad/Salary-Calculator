@@ -1,66 +1,161 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 public class NewActivity extends AppCompatActivity {
 
-    EditText name;
-    EditText ctc;
+    private static DecimalFormat df2 = new DecimalFormat("#.##");
+
+    EditText ctc1;
     Button btncal;
-    Button btnsetting;
 
+    TextView basicpayPer1;
+    TextView basicpayAmt1;
 
+    TextView hraPer1;
+    TextView hraAmt1;
 
+    TextView saPer1;
+    TextView saAmt1;
+
+    TextView caPer1;
+    TextView caAmt1;
+
+    TextView sdaPer1;
+    TextView sdaAmt1;
+
+    TextView epfPer1;
+    TextView epfAmt1;
+
+    TextView taxPer1;
+    TextView taxAmt1;
+
+    TextView netsalaryAmt1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_activity);
 
-        name=findViewById(R.id.username);
-        ctc=findViewById(R.id.ctc);
-        btncal=findViewById(R.id.btnCalculate);
-        btnsetting=findViewById(R.id.btnSetting);
+        ctc1 = findViewById(R.id.ctc);
+        btncal = findViewById(R.id.btnCalculate);
 
+        basicpayPer1 = findViewById(R.id.basicPayPer);
+        basicpayAmt1 = findViewById(R.id.basicPayAmt);
 
+        hraPer1 = findViewById(R.id.hraPer);
+        hraAmt1 = findViewById(R.id.hraAmt);
 
+        saPer1 = findViewById(R.id.saPer);
+        saAmt1 = findViewById(R.id.saAmt);
+
+        caPer1 = findViewById(R.id.caPer);
+        caAmt1 = findViewById(R.id.caAmt);
+
+        sdaPer1 = findViewById(R.id.sdaPer);
+        sdaAmt1 = findViewById(R.id.sdaAmt);
+
+        epfPer1 = findViewById(R.id.epfPer);
+        epfAmt1 = findViewById(R.id.epfAmt);
+
+        taxPer1 = findViewById(R.id.taxPer);
+        taxAmt1 = findViewById(R.id.taxAmt);
+
+        netsalaryAmt1 = findViewById(R.id.netsalaryAmt);
 
         btncal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nextto();
+                calculatorMethod();
 
             }
         });
-        btnsetting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                nextoSetting();
-            }
-        });
-
-
     }
-    public void nextto() {
+    public void calculatorMethod() {
+        double ctcSalary = Double.parseDouble(ctc1.getText().toString());
+        double bpPer = Double.parseDouble(basicpayPer1.getText().toString());
+        double bpAmt = Double.parseDouble(basicpayAmt1.getText().toString());
+        double hrap = Double.parseDouble(hraPer1.getText().toString());
+        double hraA = Double.parseDouble(hraAmt1.getText().toString());
+        double sap = Double.parseDouble(saPer1.getText().toString());
+        double saa = Double.parseDouble(saAmt1.getText().toString());
+        double cap = Double.parseDouble(caPer1.getText().toString());
+        double caa = Double.parseDouble(caAmt1.getText().toString());
+        double sdap = Double.parseDouble(sdaPer1.getText().toString());
+        double sdaa = Double.parseDouble(sdaAmt1.getText().toString());
+        double epfp = Double.parseDouble(epfPer1.getText().toString());
+        double epfa = Double.parseDouble(epfAmt1.getText().toString());
+        double taxp = Double.parseDouble(taxPer1.getText().toString());
+        double taxa = Double.parseDouble(taxAmt1.getText().toString());
+        double neta = Double.parseDouble(netsalaryAmt1.getText().toString());
+        bpPer = 30;
+        hrap = 10;
+        sap = 20;
+        cap = 5;
+        sdap = 5;
+        epfp = 12;
+        if (ctcSalary >= 0 && ctcSalary <= 250000) {
+            taxp = 0;
+            taxa = (ctcSalary * taxp / 100)/12;
 
-        Intent intent = new Intent(this, ThirdActivity.class);
-        String message2 =ctc.getText().toString();
+        } else if (ctcSalary > 250000 && ctcSalary <= 500000) {
+            taxp = 5;
+            taxa = (ctcSalary * taxp / 100)/12;
 
-        intent.putExtra("ctc", message2);
+        } else if (ctcSalary > 500000 && ctcSalary <= 1000000) {
+            taxp = 20;
+            double above5=ctcSalary-500000;
+           // taxa = (ctcSalary / 12) * taxp / 100;
+            taxa =(12500+(above5 * taxp /100))/12;
 
-        startActivity(intent);
+        } else {
+            taxp=30;
+            double above5=ctcSalary-1000000;
+           // taxa =(112500+(above5 * taxp /100))/12;
+           // taxa =(112500/12)+((above5/12) * taxp /100);
+            taxa =(112500+(above5 * taxp /100))/12;
+
+        }
+
+        bpAmt = (ctcSalary / 12) * bpPer / 100;
+        hraA = (ctcSalary / 12) * hrap / 100;
+        saa = (ctcSalary / 12) * sap / 100;
+        caa = (ctcSalary / 12) * cap / 100;
+        sdaa = (ctcSalary / 12) * sdap / 100;
+        epfa = (ctcSalary / 12) * epfp / 100;
+
+        neta = (ctcSalary / 12) - (epfa + taxa);
+
+        basicpayPer1.setText(String.valueOf(bpPer));
+        basicpayAmt1.setText(String.valueOf(df2.format(bpAmt)));
+
+        hraPer1.setText(String.valueOf(hrap));
+        hraAmt1.setText(String.valueOf(df2.format(hraA)));
+
+        saPer1.setText(String.valueOf(sap));
+        saAmt1.setText(String.valueOf(df2.format(saa)));
+
+        caPer1.setText(String.valueOf(cap));
+        caAmt1.setText(String.valueOf(df2.format(caa)));
+
+        sdaPer1.setText(String.valueOf(sdap));
+        sdaAmt1.setText(String.valueOf(df2.format(sdaa)));
+
+
+        epfPer1.setText(String.valueOf(epfp));
+        epfAmt1.setText(String.valueOf(df2.format(epfa)));
+
+        taxPer1.setText(String.valueOf(taxp));
+        taxAmt1.setText(String.valueOf(df2.format(taxa)));
+
+        netsalaryAmt1.setText(String.valueOf(df2.format(neta)));
     }
-
-    public void nextoSetting() {
-        Intent intent = new Intent(this, FourthActivity.class);
-        startActivity(intent);
-    }
-
-
 }
