@@ -22,9 +22,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30sp"
+
                 android:gravity="center"
-                android:text="SALARY STRUCTURE"
+                android:text="ADD DETAILS"
                 android:textStyle="bold"
                 android:textSize="30dp"
                 android:textColor="@color/colorPrimary"/>
@@ -34,87 +34,160 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20sp"
-                android:text="@string/tax"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimary"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/tax"
-                android:text=""
-                android:gravity="center"/>
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20sp"
-                android:text="@string/epf"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimary"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/epf"
-                android:text=""
-                android:gravity="center"/>
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20sp"
-                android:text="@string/netsalary"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimary"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/netsalary"
-                android:text=""
-                android:gravity="center"/>
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-        <Button
-            android:id="@+id/btnOfClickToHome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginTop="20dp"
-            android:background="@color/colorPrimary"
-            android:onClick="openHomePage"
-            android:text="@string/btnhome"
-            android:textColor="#ffffff" />
-    </LinearLayout>
+            android:gravity="center">
+
+            <TableLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:shrinkColumns="*"
+                android:stretchColumns="*"
+                android:background="#ffffff">
+
+
+                <TableRow
+                    android:id="@+id/tableRow1"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent">
+
+                    <TextView
+                        android:id="@+id/TextView1"
+                        android:text="COMPONENT"
+                        android:layout_weight="1"
+                        android:background="@color/colorPrimary"
+                        android:textColor="#ffffff"
+                        android:padding="20dip"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/TextView2"
+                        android:text="PERCENTAGE"
+                        android:layout_weight="1"
+                        android:background="@color/colorPrimary"
+                        android:textColor="#ffffff"
+                        android:padding="20dip"
+                        android:gravity="center"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/tableRow2"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent">
+
+                    <TextView
+
+                        android:text="Basic Pay"
+                        android:textStyle="bold"
+                        android:layout_weight="1"
+                        android:padding="20dip"
+                        android:gravity="center"/>
+
+                    <EditText
+                        android:id="@+id/basicPayPer"
+
+                        android:layout_weight="1"
+                        android:padding="20dip"
+                        android:gravity="center"/>
+
+
+                </TableRow>
+                <TableRow
+                    android:id="@+id/tableRow3"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent">
+
+                <TextView
+
+                    android:text="HRA"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:padding="20dip"
+                    android:gravity="center"/>
+
+                <EditText
+                    android:id="@+id/hraPer"
+
+                    android:layout_weight="1"
+                    android:padding="20dip"
+                    android:gravity="center"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/tableRow4"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent">
+
+                <TextView
+
+                    android:text="Special A."
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:padding="20dip"
+                    android:gravity="center"/>
+
+                <EditText
+                    android:id="@+id/saPer"
+
+                    android:layout_weight="1"
+                    android:padding="20dip"
+                    android:gravity="center"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/tableRow5"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent">
+
+                <TextView
+
+                    android:text="Canteen A."
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:padding="20dip"
+                    android:gravity="center"/>
+
+                <EditText
+                    android:id="@+id/caPer"
+
+                    android:layout_weight="1"
+                    android:padding="20dip"
+                    android:gravity="center"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/tableRow6"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent">
+
+                <TextView
+
+                    android:text="SDA"
+                    android:textStyle="bold"
+
+                    android:padding="20dip"
+                    android:gravity="center"/>
+
+                <EditText
+                    android:id="@+id/sdaPer"
+
+                    android:layout_weight="1"
+                    android:padding="20dip"
+                    android:gravity="center"/>
+                </TableRow>
+
+            </TableLayout>
+
+</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnadd"
+                android:textColor="#ffffff"
+                android:id="@+id/btnaddDetails"
+                android:background="@color/colorPrimary"/>
+</LinearLayout>
 </LinearLayout>
 </LinearLayout>

@@ -2,7 +2,9 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +18,8 @@ public class NewActivity extends AppCompatActivity {
 
     EditText ctc1;
     Button btncal;
+
+    Button btnset;
 
     TextView basicpayPer1;
     TextView basicpayAmt1;
@@ -40,13 +44,21 @@ public class NewActivity extends AppCompatActivity {
 
     TextView netsalaryAmt1;
 
+    String text;
+    String texth;
+    String texts;
+    String textc;
+    String textsd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_activity);
 
+
         ctc1 = findViewById(R.id.ctc);
         btncal = findViewById(R.id.btnCalculate);
+        btnset=findViewById(R.id.btnsetting);
 
         basicpayPer1 = findViewById(R.id.basicPayPer);
         basicpayAmt1 = findViewById(R.id.basicPayAmt);
@@ -71,6 +83,7 @@ public class NewActivity extends AppCompatActivity {
 
         netsalaryAmt1 = findViewById(R.id.netsalaryAmt);
 
+
         btncal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,30 +91,46 @@ public class NewActivity extends AppCompatActivity {
 
             }
         });
+        btnset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotoSettings();
+            }
+        });
     }
     public void calculatorMethod() {
+
+
+        Intent intent=getIntent();
+        text=intent.getExtras().getString("bp1");
+        texth=intent.getExtras().getString("hra1");
+        texts=intent.getExtras().getString("sa1");
+        textc=intent.getExtras().getString("ca1");
+        textsd=intent.getExtras().getString("sda1");
+
+        double bpPer = Double.parseDouble(text);
+
         double ctcSalary = Double.parseDouble(ctc1.getText().toString());
-        double bpPer = Double.parseDouble(basicpayPer1.getText().toString());
+
+
         double bpAmt = Double.parseDouble(basicpayAmt1.getText().toString());
-        double hrap = Double.parseDouble(hraPer1.getText().toString());
+        double hrap = Double.parseDouble(texth);
         double hraA = Double.parseDouble(hraAmt1.getText().toString());
-        double sap = Double.parseDouble(saPer1.getText().toString());
+        double sap = Double.parseDouble(texts);
         double saa = Double.parseDouble(saAmt1.getText().toString());
-        double cap = Double.parseDouble(caPer1.getText().toString());
+        double cap = Double.parseDouble(textc);
         double caa = Double.parseDouble(caAmt1.getText().toString());
-        double sdap = Double.parseDouble(sdaPer1.getText().toString());
+        double sdap = Double.parseDouble(textsd);
         double sdaa = Double.parseDouble(sdaAmt1.getText().toString());
         double epfp = Double.parseDouble(epfPer1.getText().toString());
         double epfa = Double.parseDouble(epfAmt1.getText().toString());
         double taxp = Double.parseDouble(taxPer1.getText().toString());
         double taxa = Double.parseDouble(taxAmt1.getText().toString());
         double neta = Double.parseDouble(netsalaryAmt1.getText().toString());
-        bpPer = 30;
-        hrap = 10;
-        sap = 20;
-        cap = 5;
-        sdap = 5;
+
         epfp = 12;
+
+
         if (ctcSalary >= 0 && ctcSalary <= 250000) {
             taxp = 0;
             taxa = (ctcSalary * taxp / 100)/12;
@@ -113,14 +142,12 @@ public class NewActivity extends AppCompatActivity {
         } else if (ctcSalary > 500000 && ctcSalary <= 1000000) {
             taxp = 20;
             double above5=ctcSalary-500000;
-           // taxa = (ctcSalary / 12) * taxp / 100;
             taxa =(12500+(above5 * taxp /100))/12;
 
         } else {
             taxp=30;
             double above5=ctcSalary-1000000;
-           // taxa =(112500+(above5 * taxp /100))/12;
-           // taxa =(112500/12)+((above5/12) * taxp /100);
+
             taxa =(112500+(above5 * taxp /100))/12;
 
         }
@@ -158,4 +185,21 @@ public class NewActivity extends AppCompatActivity {
 
         netsalaryAmt1.setText(String.valueOf(df2.format(neta)));
     }
+
+
+
+    public void gotoSettings()
+    {
+        Intent intent = new Intent(this, ThirdActivity.class);
+        startActivity(intent);
+    }
+    boolean isEmpty(EditText text)
+    {
+        CharSequence str= text.getText().toString();
+        return TextUtils.isEmpty(str);
+
+    }
 }
+
+
+

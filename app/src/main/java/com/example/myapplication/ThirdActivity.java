@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,30 +13,87 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ThirdActivity extends AppCompatActivity {
 
-    TextView tax;
-    TextView epf;
-    TextView netsalary;
-    Button btn;
+    EditText bpN;
+   EditText hraN;
+    EditText saN;
+    EditText  caN;
+    EditText sdaN;
 
-    String salary1;
-   /* String tp;
-    String ep;
-*/
+   Button btnsubmit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.third_activity);
+        bpN=findViewById(R.id.basicPayPer);
 
-             tax = findViewById(R.id.tax);
+        btnsubmit=findViewById(R.id.btnaddDetails);
+
+        btnsubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                againGotoMain();
+            }
+        });
+
+        hraN=findViewById(R.id.hraPer);
+        saN=findViewById(R.id.saPer);
+        caN=findViewById(R.id.caPer);
+        sdaN=findViewById(R.id.sdaPer);
+
+
+
+
+        /*Bundle bundle = new Bundle();
+        bundle.putString("bp",bp);
+        bundle.putString("hra",hra);
+        bundle.putString("sa",sa);
+        bundle.putString("ca",ca);
+        bundle.putString("sda",sda);
+        i.putExtras(bundle);
+        startActivity(i);*/
+
+
+       /* btnsubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                submitChanges();
+            }
+        });*/
+    }
+    public void againGotoMain()
+    {
+
+
+        Intent i = new Intent(this, NewActivity.class);
+        String bp=bpN.getText().toString();
+        String hra=hraN.getText().toString();
+        String sa=saN.getText().toString();
+        String ca=caN.getText().toString();
+        String sda=sdaN.getText().toString();
+
+        i.putExtra("bp1", bp);
+        i.putExtra("hra1",hra);
+        i.putExtra("sa1",sa);
+        i.putExtra("ca1", ca);
+        i.putExtra("sda1",sda);
+
+        startActivity(i);
+
+    }
+
+}
+
+        /*     tax = findViewById(R.id.tax);
              epf = findViewById(R.id.epf);
              netsalary = findViewById(R.id.netsalary);
              btn=findViewById(R.id.btnOfClickToHome);
 
         Intent intent = getIntent();
         salary1=intent.getExtras().getString("ctc");
-        /*tp=intent.getExtras().getString("taxPer1");
+        *//*tp=intent.getExtras().getString("taxPer1");
         ep=intent.getExtras().getString("epfPer1");
-*/
+*//*
         tax = findViewById(R.id.tax);
         epf = findViewById(R.id.epf);
         netsalary = findViewById(R.id.netsalary);
@@ -51,19 +109,19 @@ public class ThirdActivity extends AppCompatActivity {
 
 
 
-    }
-    public void netSalaryCalculation()
+    }*/
+    /*public void netSalaryCalculation()
     {
         double ctcSalary= Double.parseDouble(salary1);
-         /* double taxPer=Double.parseDouble(tp);
-        double epfPer=Double.parseDouble(ep);*/
+         *//* double taxPer=Double.parseDouble(tp);
+        double epfPer=Double.parseDouble(ep);*//*
         double netsalaryOfMonth;
         double  ctcTax;
         double  ctcEpf;
 
-       /* double  ctcTax=(ctcSalary*taxPer/100)/12;
-        double  ctcEpf=(ctcSalary*epfPer/100)/12;*/
-      /* if(isEmpty(tax) && isEmpty(epf))
+       *//* double  ctcTax=(ctcSalary*taxPer/100)/12;
+        double  ctcEpf=(ctcSalary*epfPer/100)/12;*//*
+      *//* if(isEmpty(tax) && isEmpty(epf))
         {
             Toast t=Toast.makeText(this, "You must Add details in Settings", Toast.LENGTH_SHORT);
             t.show();
@@ -72,7 +130,7 @@ public class ThirdActivity extends AppCompatActivity {
         {
             ctcTax=(ctcSalary*taxPer/100)/12;
             ctcEpf=(ctcSalary*epfPer/100)/12;
-        }*/
+        }*//*
        if(ctcSalary>=500000)
         {
             ctcTax=(ctcSalary*10/100)/12;
@@ -109,3 +167,4 @@ public class ThirdActivity extends AppCompatActivity {
 
     }
 
+*/
