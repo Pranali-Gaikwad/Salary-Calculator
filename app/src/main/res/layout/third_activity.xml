@@ -6,10 +6,11 @@
     android:layout_height="match_parent"
     android:gravity="center">
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="390dp"
+        android:layout_height="550dp"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:background="@drawable/customborder">
 
 
         <LinearLayout
@@ -27,7 +28,8 @@
                 android:text="ADD DETAILS"
                 android:textStyle="bold"
                 android:textSize="30dp"
-                android:textColor="@color/colorPrimary"/>
+
+                android:textColor="#9f1d35"/>
 
 </LinearLayout>
         <LinearLayout
@@ -55,7 +57,7 @@
                         android:id="@+id/TextView1"
                         android:text="COMPONENT"
                         android:layout_weight="1"
-                        android:background="@color/colorPrimary"
+                        android:background="#9f1d35"
                         android:textColor="#ffffff"
                         android:padding="20dip"
                         android:gravity="center"/>
@@ -64,7 +66,7 @@
                         android:id="@+id/TextView2"
                         android:text="PERCENTAGE"
                         android:layout_weight="1"
-                        android:background="@color/colorPrimary"
+                        android:background="#9f1d35"
                         android:textColor="#ffffff"
                         android:padding="20dip"
                         android:gravity="center"/>
@@ -187,7 +189,7 @@
                 android:text="@string/btnadd"
                 android:textColor="#ffffff"
                 android:id="@+id/btnaddDetails"
-                android:background="@color/colorPrimary"/>
+                android:background="#9f1d35"/>
 </LinearLayout>
 </LinearLayout>
 </LinearLayout>

@@ -1,10 +1,13 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,7 +22,6 @@ public class NewActivity extends AppCompatActivity {
     EditText ctc1;
     Button btncal;
 
-    Button btnset;
 
     TextView basicpayPer1;
     TextView basicpayAmt1;
@@ -51,6 +53,13 @@ public class NewActivity extends AppCompatActivity {
     String textsd;
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_res, menu);
+        return true;
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_activity);
@@ -58,7 +67,7 @@ public class NewActivity extends AppCompatActivity {
 
         ctc1 = findViewById(R.id.ctc);
         btncal = findViewById(R.id.btnCalculate);
-        btnset=findViewById(R.id.btnsetting);
+
 
         basicpayPer1 = findViewById(R.id.basicPayPer);
         basicpayAmt1 = findViewById(R.id.basicPayAmt);
@@ -91,12 +100,7 @@ public class NewActivity extends AppCompatActivity {
 
             }
         });
-        btnset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                gotoSettings();
-            }
-        });
+
     }
     public void calculatorMethod() {
 
@@ -188,18 +192,31 @@ public class NewActivity extends AppCompatActivity {
 
 
 
-    public void gotoSettings()
-    {
-        Intent intent = new Intent(this, ThirdActivity.class);
-        startActivity(intent);
-    }
+
     boolean isEmpty(EditText text)
     {
         CharSequence str= text.getText().toString();
         return TextUtils.isEmpty(str);
 
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item)
+    {
+        switch(item.getItemId())
+        {
+            case R.id.setting_on_action_bar:
+                Intent intent = new Intent(this, ThirdActivity.class);
+                this.startActivity(intent);
+                break;
+            case R.id.show_history:
+                // another startActivity, this is for item with id "menu_item2"
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+        return true;
+    }
+
 }
-
-
 

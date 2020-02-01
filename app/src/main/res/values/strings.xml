@@ -6,7 +6,7 @@
     <string name="tax">Tax  </string>
     <string name="epf">EPF  </string>
     <string name="netsalary">Net Salary</string>
-    <string name="btncheck">Check</string>
+    <string name="btncheck">CALCULATE</string>
     <string name="btnsetting">Settings</string>
     <string name="secondtitle">ADD DETAILS</string>
     <string name="epfPer">EPF %</string>
