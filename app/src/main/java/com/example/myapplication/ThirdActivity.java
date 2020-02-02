@@ -14,20 +14,21 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ThirdActivity extends AppCompatActivity {
 
     EditText bpN;
-   EditText hraN;
+    EditText hraN;
     EditText saN;
-    EditText  caN;
+    EditText caN;
     EditText sdaN;
 
-   Button btnsubmit;
+    Button btnsubmit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.third_activity);
-        bpN=findViewById(R.id.basicPayPer);
+        bpN = findViewById(R.id.basicPayPer);
 
-        btnsubmit=findViewById(R.id.btnaddDetails);
+        btnsubmit = findViewById(R.id.btnaddDetails);
+
 
         btnsubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,10 +37,10 @@ public class ThirdActivity extends AppCompatActivity {
             }
         });
 
-        hraN=findViewById(R.id.hraPer);
-        saN=findViewById(R.id.saPer);
-        caN=findViewById(R.id.caPer);
-        sdaN=findViewById(R.id.sdaPer);
+        hraN = findViewById(R.id.hraPer);
+        saN = findViewById(R.id.saPer);
+        caN = findViewById(R.id.caPer);
+        sdaN = findViewById(R.id.sdaPer);
 
 
 
@@ -61,37 +62,38 @@ public class ThirdActivity extends AppCompatActivity {
             }
         });*/
     }
-    public void againGotoMain()
-    {
 
+    public void againGotoMain() {
 
-        Intent i = new Intent(this, NewActivity.class);
-        String bp=bpN.getText().toString();
-        String hra=hraN.getText().toString();
+        Intent i = new Intent();
+        //  Intent i = new Intent(this, NewActivity.class);
+        String bp = bpN.getText().toString();
+       String hra=hraN.getText().toString();
         String sa=saN.getText().toString();
         String ca=caN.getText().toString();
         String sda=sdaN.getText().toString();
 
         i.putExtra("bp1", bp);
-        i.putExtra("hra1",hra);
+       i.putExtra("hra1",hra);
         i.putExtra("sa1",sa);
         i.putExtra("ca1", ca);
         i.putExtra("sda1",sda);
+        setResult(RESULT_OK, i);
 
-        startActivity(i);
+        finish();
+        // startActivity(i);
 
     }
 
-}
 
-        /*     tax = findViewById(R.id.tax);
-             epf = findViewById(R.id.epf);
-             netsalary = findViewById(R.id.netsalary);
-             btn=findViewById(R.id.btnOfClickToHome);
+    /*     tax = findViewById(R.id.tax);
+         epf = findViewById(R.id.epf);
+         netsalary = findViewById(R.id.netsalary);
+         btn=findViewById(R.id.btnOfClickToHome);
 
-        Intent intent = getIntent();
-        salary1=intent.getExtras().getString("ctc");
-        *//*tp=intent.getExtras().getString("taxPer1");
+    Intent intent = getIntent();
+    salary1=intent.getExtras().getString("ctc");
+    *//*tp=intent.getExtras().getString("taxPer1");
         ep=intent.getExtras().getString("epfPer1");
 *//*
         tax = findViewById(R.id.tax);
@@ -121,7 +123,7 @@ public class ThirdActivity extends AppCompatActivity {
 
        *//* double  ctcTax=(ctcSalary*taxPer/100)/12;
         double  ctcEpf=(ctcSalary*epfPer/100)/12;*//*
-      *//* if(isEmpty(tax) && isEmpty(epf))
+     *//* if(isEmpty(tax) && isEmpty(epf))
         {
             Toast t=Toast.makeText(this, "You must Add details in Settings", Toast.LENGTH_SHORT);
             t.show();
@@ -168,3 +170,5 @@ public class ThirdActivity extends AppCompatActivity {
     }
 
 */
+
+}

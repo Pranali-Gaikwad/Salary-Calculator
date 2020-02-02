@@ -86,7 +86,7 @@
 
                     <EditText
                         android:id="@+id/basicPayPer"
-
+                        android:text="30"
                         android:layout_weight="1"
                         android:padding="20dip"
                         android:gravity="center"/>
@@ -108,7 +108,7 @@
 
                 <EditText
                     android:id="@+id/hraPer"
-
+                    android:text="10"
                     android:layout_weight="1"
                     android:padding="20dip"
                     android:gravity="center"/>
@@ -128,7 +128,7 @@
 
                 <EditText
                     android:id="@+id/saPer"
-
+                    android:text="20"
                     android:layout_weight="1"
                     android:padding="20dip"
                     android:gravity="center"/>
@@ -148,7 +148,7 @@
 
                 <EditText
                     android:id="@+id/caPer"
-
+                    android:text="05"
                     android:layout_weight="1"
                     android:padding="20dip"
                     android:gravity="center"/>
@@ -168,7 +168,7 @@
 
                 <EditText
                     android:id="@+id/sdaPer"
-
+                    android:text="05"
                     android:layout_weight="1"
                     android:padding="20dip"
                     android:gravity="center"/>

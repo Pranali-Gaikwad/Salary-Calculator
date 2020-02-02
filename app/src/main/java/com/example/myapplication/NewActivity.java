@@ -2,7 +2,6 @@ package com.example.myapplication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import java.text.DecimalFormat;
 
 public class NewActivity extends AppCompatActivity {
@@ -21,7 +19,6 @@ public class NewActivity extends AppCompatActivity {
 
     EditText ctc1;
     Button btncal;
-
 
     TextView basicpayPer1;
     TextView basicpayAmt1;
@@ -46,11 +43,17 @@ public class NewActivity extends AppCompatActivity {
 
     TextView netsalaryAmt1;
 
-    String text;
-    String texth;
-    String texts;
-    String textc;
-    String textsd;
+    TextView total;
+    TextView ded;
+    TextView net;
+
+    double bpPer=30;
+    double hrap=10;
+    double sap=20;
+    double cap=5;
+    double sdap=5;
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -64,10 +67,8 @@ public class NewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_activity);
 
-
         ctc1 = findViewById(R.id.ctc);
         btncal = findViewById(R.id.btnCalculate);
-
 
         basicpayPer1 = findViewById(R.id.basicPayPer);
         basicpayAmt1 = findViewById(R.id.basicPayAmt);
@@ -93,6 +94,7 @@ public class NewActivity extends AppCompatActivity {
         netsalaryAmt1 = findViewById(R.id.netsalaryAmt);
 
 
+
         btncal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,27 +106,11 @@ public class NewActivity extends AppCompatActivity {
     }
     public void calculatorMethod() {
 
-
-        Intent intent=getIntent();
-        text=intent.getExtras().getString("bp1");
-        texth=intent.getExtras().getString("hra1");
-        texts=intent.getExtras().getString("sa1");
-        textc=intent.getExtras().getString("ca1");
-        textsd=intent.getExtras().getString("sda1");
-
-        double bpPer = Double.parseDouble(text);
-
         double ctcSalary = Double.parseDouble(ctc1.getText().toString());
-
-
         double bpAmt = Double.parseDouble(basicpayAmt1.getText().toString());
-        double hrap = Double.parseDouble(texth);
         double hraA = Double.parseDouble(hraAmt1.getText().toString());
-        double sap = Double.parseDouble(texts);
         double saa = Double.parseDouble(saAmt1.getText().toString());
-        double cap = Double.parseDouble(textc);
         double caa = Double.parseDouble(caAmt1.getText().toString());
-        double sdap = Double.parseDouble(textsd);
         double sdaa = Double.parseDouble(sdaAmt1.getText().toString());
         double epfp = Double.parseDouble(epfPer1.getText().toString());
         double epfa = Double.parseDouble(epfAmt1.getText().toString());
@@ -165,28 +151,16 @@ public class NewActivity extends AppCompatActivity {
 
         neta = (ctcSalary / 12) - (epfa + taxa);
 
-        basicpayPer1.setText(String.valueOf(bpPer));
+
         basicpayAmt1.setText(String.valueOf(df2.format(bpAmt)));
-
-        hraPer1.setText(String.valueOf(hrap));
         hraAmt1.setText(String.valueOf(df2.format(hraA)));
-
-        saPer1.setText(String.valueOf(sap));
         saAmt1.setText(String.valueOf(df2.format(saa)));
-
-        caPer1.setText(String.valueOf(cap));
         caAmt1.setText(String.valueOf(df2.format(caa)));
-
-        sdaPer1.setText(String.valueOf(sdap));
         sdaAmt1.setText(String.valueOf(df2.format(sdaa)));
-
-
         epfPer1.setText(String.valueOf(epfp));
         epfAmt1.setText(String.valueOf(df2.format(epfa)));
-
         taxPer1.setText(String.valueOf(taxp));
         taxAmt1.setText(String.valueOf(df2.format(taxa)));
-
         netsalaryAmt1.setText(String.valueOf(df2.format(neta)));
     }
 
@@ -207,10 +181,11 @@ public class NewActivity extends AppCompatActivity {
         {
             case R.id.setting_on_action_bar:
                 Intent intent = new Intent(this, ThirdActivity.class);
-                this.startActivity(intent);
+
+                this.startActivityForResult(intent, 1);
                 break;
             case R.id.show_history:
-                // another startActivity, this is for item with id "menu_item2"
+
                 break;
             default:
                 return super.onOptionsItemSelected(item);
@@ -218,5 +193,30 @@ public class NewActivity extends AppCompatActivity {
         return true;
     }
 
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                String text= data.getStringExtra("bp1");
+                String texth=data.getStringExtra("hra1");
+                String texts=data.getStringExtra("sa1");
+                String textc=data.getStringExtra("ca1");
+                String textsd=data.getStringExtra("sda1");
+
+                bpPer = Double.parseDouble(text);
+                hrap = Double.parseDouble(texth);
+                sap = Double.parseDouble(texts);
+                cap = Double.parseDouble(textc);
+                sdap = Double.parseDouble(textsd);
+
+                basicpayPer1.setText(String.valueOf(bpPer));
+                hraPer1.setText(String.valueOf(hrap));
+                saPer1.setText(String.valueOf(sap));
+                caPer1.setText(String.valueOf(cap));
+                sdaPer1.setText(String.valueOf(sdap));
+
+            }
+        }
+    }
 }
 
