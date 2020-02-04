@@ -45,22 +45,6 @@ public class ThirdActivity extends AppCompatActivity {
 
 
 
-        /*Bundle bundle = new Bundle();
-        bundle.putString("bp",bp);
-        bundle.putString("hra",hra);
-        bundle.putString("sa",sa);
-        bundle.putString("ca",ca);
-        bundle.putString("sda",sda);
-        i.putExtras(bundle);
-        startActivity(i);*/
-
-
-       /* btnsubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                submitChanges();
-            }
-        });*/
     }
 
     public void againGotoMain() {

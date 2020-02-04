@@ -3,8 +3,8 @@
     <string name="title">SALARY CALCULATOR</string>
     <string name="name">Name</string>
     <string name="salary">CTC</string>
-    <string name="tax">Tax  </string>
-    <string name="epf">EPF  </string>
+    <string name="tax">Tax</string>
+    <string name="epf">EPF</string>
     <string name="netsalary">Net Salary</string>
     <string name="btncheck">CALCULATE</string>
     <string name="btnsetting">Settings</string>

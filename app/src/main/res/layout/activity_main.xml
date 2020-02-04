@@ -26,7 +26,7 @@
             <ImageView
                 android:layout_width="400sp"
                 android:layout_height="450sp"
-                android:background="#9f1d35"
+                android:background="#DCDCDC"
                 android:gravity="center"
                 android:src="@drawable/salaryimage" />
 
@@ -39,7 +39,7 @@
             android:layout_marginBottom="30sp"
             android:gravity="center"
             android:text="@string/title"
-            android:textColor="#9f1d35"
+
             android:textSize="30dp"
             android:textStyle="bold" />
     </LinearLayout>
