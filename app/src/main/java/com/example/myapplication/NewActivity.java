@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -40,26 +41,21 @@ public class NewActivity extends AppCompatActivity {
     TextView taxPer1;
     TextView taxAmt1;
 
-    TextView netsalaryAmt1;
-
     TextView total;
     TextView ded;
     TextView net;
 
-    double bpPer=30;
-    double hrap=10;
-    double sap=20;
-    double cap=5;
-    double sdap=5;
-    double epfp=12;
+    double bpPer = 30;
+    double hrap = 10;
+    double sap = 20;
+    double cap = 5;
+    double sdap = 5;
+    double epfp = 12;
     double taxp;
     double epfa;
     double taxa;
 
     double neta;
-
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -96,14 +92,12 @@ public class NewActivity extends AppCompatActivity {
         taxPer1 = findViewById(R.id.taxPer);
         taxAmt1 = findViewById(R.id.taxAmt);
 
-        netsalaryAmt1 = findViewById(R.id.netsalaryAmt);
 
-        total=findViewById(R.id.permonth);
-        ded=findViewById(R.id.permonthDeduction);
-        net=findViewById(R.id.NetFinalDisplay);
+        total = findViewById(R.id.permonth);
+        ded = findViewById(R.id.permonthDeduction);
+        net = findViewById(R.id.NetFinalDisplay);
 
-        ctc1.setOnKeyListener(new EditText.OnKeyListener()
-        {
+        ctc1.setOnKeyListener(new EditText.OnKeyListener() {
             public boolean onKey(View v, int KeyCode, KeyEvent event) {
                 if (event.getAction() == KeyEvent.ACTION_DOWN) {
                     switch (KeyCode) {
@@ -118,14 +112,15 @@ public class NewActivity extends AppCompatActivity {
                 }
                 return false;
             }
-            });
+        });
     }
-    boolean isEmpty(EditText text)
-    {
-        CharSequence str= text.getText().toString();
+
+    boolean isEmpty(EditText text) {
+        CharSequence str = text.getText().toString();
         return TextUtils.isEmpty(str);
 
     }
+
     public void calculatorMethod() {
 
         if (isEmpty(ctc1)) {
@@ -138,14 +133,6 @@ public class NewActivity extends AppCompatActivity {
             double saa = Double.parseDouble(saAmt1.getText().toString());
             double caa = Double.parseDouble(caAmt1.getText().toString());
             double sdaa = Double.parseDouble(sdaAmt1.getText().toString());
-           // double epfp = Double.parseDouble(epfPer1.getText().toString());
-           // double epfa = Double.parseDouble(epfAmt1.getText().toString());
-           // double taxp = Double.parseDouble(taxPer1.getText().toString());
-          //  double taxa = Double.parseDouble(taxAmt1.getText().toString());
-          //  double neta = Double.parseDouble(netsalaryAmt1.getText().toString());
-
-
-
 
             if (ctcSalary >= 0 && ctcSalary <= 250000) {
                 taxp = 0;
@@ -164,7 +151,6 @@ public class NewActivity extends AppCompatActivity {
             } else {
                 taxp = 30;
                 double above10 = ctcSalary - 1000000;
-
                 taxa = (112500 + (above10 * taxp / 100)) / 12;
 
             }
@@ -177,7 +163,6 @@ public class NewActivity extends AppCompatActivity {
             epfa = (ctcSalary / 12) * epfp / 100;
             neta = (ctcSalary / 12) - (epfa + taxa);
 
-            double t=bpPer+hrap+sap+cap+sdap+epfp+taxp;
 
             basicpayAmt1.setText(String.valueOf(df2.format(bpAmt)));
             hraAmt1.setText(String.valueOf(df2.format(hraA)));
@@ -188,7 +173,6 @@ public class NewActivity extends AppCompatActivity {
             epfAmt1.setText(String.valueOf(df2.format(epfa)));
             taxPer1.setText(String.valueOf(taxp));
             taxAmt1.setText(String.valueOf(df2.format(taxa)));
-            netsalaryAmt1.setText(String.valueOf(df2.format(neta)));
             total.setText(String.valueOf(df2.format((ctcSalary / 12))));
             ded.setText(String.valueOf(df2.format((taxa + epfa))));
             net.setText(String.valueOf(df2.format(neta)));
@@ -197,14 +181,9 @@ public class NewActivity extends AppCompatActivity {
 
     }
 
-
-
-
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item)
-    {
-        switch(item.getItemId())
-        {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
             case R.id.setting_on_action_bar:
                 Intent intent = new Intent(this, ThirdActivity.class);
 
@@ -223,11 +202,11 @@ public class NewActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
-                String text= data.getStringExtra("bp1");
-                String texth=data.getStringExtra("hra1");
-                String texts=data.getStringExtra("sa1");
-                String textc=data.getStringExtra("ca1");
-                String textsd=data.getStringExtra("sda1");
+                String text = data.getStringExtra("bp1");
+                String texth = data.getStringExtra("hra1");
+                String texts = data.getStringExtra("sa1");
+                String textc = data.getStringExtra("ca1");
+                String textsd = data.getStringExtra("sda1");
 
                 bpPer = Double.parseDouble(text);
                 hrap = Double.parseDouble(texth);
@@ -236,62 +215,27 @@ public class NewActivity extends AppCompatActivity {
                 sdap = Double.parseDouble(textsd);
                 double ctcSalary = Double.parseDouble(ctc1.getText().toString());
 
-                if (bpPer!=30)
-                {
 
-                    double bpAmt = Double.parseDouble(basicpayAmt1.getText().toString());
-                    bpAmt = (ctcSalary / 12) * bpPer / 100;
-                     basicpayAmt1.setText(String.valueOf(df2.format(bpAmt)));
-
-
-                }
-                if (hrap!=10)
-                {
-
-                    double hraA = Double.parseDouble(hraAmt1.getText().toString());
-                    hraA = (ctcSalary / 12) * hrap / 100;
-                    hraAmt1.setText(String.valueOf(df2.format(hraA)));
-
-                }
-                if (sap!=20)
-                {
-                    double saa = Double.parseDouble(saAmt1.getText().toString());
-                    saa = (ctcSalary / 12) * sap / 100;
-                    saAmt1.setText(String.valueOf(df2.format(saa)));
+                double t = bpPer + hrap + sap + cap + sdap + epfp + taxp;
+                if (t > 100) {
+                    AlertDialog.Builder al = new AlertDialog.Builder(this);
+                    al.setMessage("Total Percentage is greater than 100");
+                    al.setTitle("Error Message");
+                    al.setPositiveButton("OK", null);
+                    al.setCancelable(true);
+                    al.create().show();
+                } else {
+                    calculatorMethod();
+                    basicpayPer1.setText(String.valueOf(bpPer));
+                    hraPer1.setText(String.valueOf(hrap));
+                    saPer1.setText(String.valueOf(sap));
+                    caPer1.setText(String.valueOf(cap));
+                    sdaPer1.setText(String.valueOf(sdap));
+                    total.setText(String.valueOf(df2.format((ctcSalary / 12))));
 
                 }
-              if (cap!=5)
-                {
-
-                    double caa = Double.parseDouble(caAmt1.getText().toString());
-                    caa = (ctcSalary / 12) * cap / 100;
-                    caAmt1.setText(String.valueOf(df2.format(caa)));
-
-
-
-                }
-             if(sdap!=5)
-                {
-                    double sdaa = Double.parseDouble(sdaAmt1.getText().toString());
-                    sdaa = (ctcSalary / 12) * sdap / 100;
-                    sdaAmt1.setText(String.valueOf(df2.format(sdaa)));
-
-                }
-
-                basicpayPer1.setText(String.valueOf(bpPer));
-                hraPer1.setText(String.valueOf(hrap));
-                saPer1.setText(String.valueOf(sap));
-                caPer1.setText(String.valueOf(cap));
-                sdaPer1.setText(String.valueOf(sdap));
-                total.setText(String.valueOf(df2.format((ctcSalary / 12))));
-
-                epfp = 12;
-                epfa = (ctcSalary / 12) * epfp / 100;
-                ded.setText(String.valueOf(df2.format((taxa + epfa))));
-                net.setText(String.valueOf(df2.format(neta)));
-
             }
         }
     }
-}
 
+}

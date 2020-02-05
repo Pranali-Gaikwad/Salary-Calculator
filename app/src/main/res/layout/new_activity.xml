@@ -24,7 +24,6 @@
         android:orientation="vertical"
         android:layout_width="380dp"
         android:layout_height="90dp"
-
         android:backgroundTint="#e0ffff"
         android:background="@drawable/customborder">
 
@@ -90,8 +89,7 @@
         android:layout_width="390dp"
         android:layout_height="400dp"
         android:orientation="horizontal"
-
-        android:gravity="center">
+            android:gravity="center">
 
         <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
@@ -352,41 +350,6 @@
                     android:id="@+id/taxAmt"
                     android:text="00"
                     android:textColor="#000000"
-                    android:layout_weight="1"
-                    android:padding="20dip"
-                    android:gravity="center"/>
-
-            </TableRow>
-
-
-            <TableRow
-                android:id="@+id/tableRow10"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent">
-
-                <TextView
-
-                    android:text="Net Salary"
-                    android:textStyle="bold"
-                    android:textColor="#000000"
-                    android:layout_weight="1"
-                    android:padding="20dip"
-                    android:gravity="center"/>
-
-                <TextView
-
-                    android:text="-"
-                    android:layout_weight="1"
-                    android:padding="20dip"
-                    android:textColor="#000000"
-                    android:gravity="center"/>
-
-                <TextView
-                    android:id="@+id/netsalaryAmt"
-                    android:text="00"
-                    android:textColor="#000000"
-                    android:background="#dcdcdc"
-
                     android:layout_weight="1"
                     android:padding="20dip"
                     android:gravity="center"/>
