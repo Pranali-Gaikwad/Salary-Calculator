@@ -13,10 +13,8 @@
 
         <activity android:name="com.example.myapplication.ThirdActivity"></activity>
         <activity android:name="com.example.myapplication.NewActivity"
-       android:windowSoftInputMode="adjustResize|adjustPan"> </activity><![CDATA[>
+       android:windowSoftInputMode="adjustResize|adjustPan"> </activity>
 
-
-        ]]>
         <activity android:name="com.example.myapplication.MainActivity">
 
             <intent-filter>
